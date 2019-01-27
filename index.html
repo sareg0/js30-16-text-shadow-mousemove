@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>🦄  CODE</h1>
+  </div>
+
+  <style>
+  html {
+    color: black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  h1 {
+    text-shadow: 0 0 0 rgba(0,0,0,1);
+    font-size: 100px;
+  }
+  </style>
+
+<script>
+  const heroEl = document.querySelector('.hero h1')
+  window.addEventListener("mousemove", updateTextShadow)
+
+
+  function updateTextShadow (e) {
+    const width = heroEl.offsetWidth
+    const height = heroEl.offsetHeight
+    const xwalk = Math.round((e.x / width * 20) - (20/2))
+    const ywalk = Math.round((e.y / height * 20) - (20/2))
+    console.log(xwalk, ywalk)
+    heroEl.style.textShadow = `
+      ${xwalk}px ${ywalk}px 0 rgba(${e.x / 2},0,${e.y},0.9),
+      ${ywalk}px ${xwalk}px 0 rgba(${e.y / 2},${e.x},0,0.8),
+      ${xwalk * -1}px ${ywalk * -1}px 0 rgba(0,0,${e.x / 2 },0.7),
+      ${ywalk * -1}px ${xwalk * -1}px 0 rgba(${e.x / 2 },${e.y / 2},0.6)
+    `
+  }
+</script>
+</body>
+</html>
