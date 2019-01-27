@@ -44,7 +44,7 @@
     const height = heroEl.offsetHeight
     const xwalk = Math.round((e.x / width * 20) - (20/2))
     const ywalk = Math.round((e.y / height * 20) - (20/2))
-    console.log(xwalk, ywalk)
+
     heroEl.style.textShadow = `
       ${xwalk}px ${ywalk}px 0 rgba(${e.x / 2},0,${e.y},0.9),
       ${ywalk}px ${xwalk}px 0 rgba(${e.y / 2},${e.x},0,0.8),
